@@ -40,6 +40,12 @@ This app needs a dedicated global IPv4 address; a shared one won't work with mul
 $ fly ips allocate-v4
 ```
 
+Now you can deploy
+
+```
+$ fly deploy
+```
+
 Open your app:
 
 ```
