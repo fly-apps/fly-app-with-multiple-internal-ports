@@ -11,6 +11,8 @@ how you can configure you app to listen to these different ports.
 
 ## How to deploy
 
+Launch to create the app, but don't deploy it yet.
+
 ```sh
 # Launch the app and keep the configuration by replying Yes on the first question
 $ fly launch
@@ -19,14 +21,23 @@ An existing fly.toml file was found
 Creating app in /path/to/folder
 Scanning source code
 Detected a Dockerfile app
-? App Name (leave blank to use an auto-generated name): myappname-multiple-ports
-? Select organization: Lubien (personal)
-? Select region: gru (São Paulo)
+? Choose an app name (leave blank to generate one): myappname-multiple-ports
+? Select Organization: Lubien (personal)
+? Choose a region for deployment: São Paulo (gru)
 Created app myappname-multiple-ports in organization personal
+Admin URL: https://fly.io/apps/myappname-multiple-ports
+Hostname: myappname-multiple-ports.fly.dev
 Wrote config file fly.toml
 ? Would you like to setup a Postgresql database now? No
-? Would you like to deploy now? Yes
-Deploying myappname-multiple-ports
+? Would you like to set up an Upstash Redis database now? No
+? Would you like to deploy now? No
+Your app is ready! Deploy with `flyctl deploy`
+```
+
+This app needs a dedicated global IPv4 address; a shared one won't work with multiple services. Fly.io does not automatically allocate [dedicated IPv4s](https://fly.io/docs/about/pricing/#anycast-ip-addresses), so you have to provision one yourself:
+
+```
+$ fly ips allocate-v4
 ```
 
 Open your app:
